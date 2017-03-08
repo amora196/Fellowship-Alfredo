@@ -1,25 +1,46 @@
+
 <div class="fellowships form">
-<?php echo $this->Form->create('Fellowship'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Fellowship'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('title');
-		echo $this->Form->input('body');
-		echo $this->Form->input('degree_id');
-		echo $this->Form->input('discipline_id');
-		echo $this->Form->input('elegibility_id');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('User');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+	<!--?php echo $this->element('page_header', array('userLink' => $userLink, "title" => $title, 'buttons' => $buttons, 'escape' => false)); ?>-->
+
+	<?php echo $this->Form->create('Fellowship', array("class" => "form-horizontal")); ?>
+			<legend><?php echo __('Edit Fellowship'); ?></legend>
+    <h3 class="slds-section-title--divider">Main Information</h3>
+	<div class="row">
+		<div class="col-md-6">
+				<?php echo $this->Form->input('title', array("class" => "slds-input", 
+					"div" => array("class" => "slds-form-element__control"),"label" => array("class" => "slds-form-element__label"))); ?>
+		</div>
+		<div class="col-md-6">
+			<?php echo $this->Form->input('degree_id', array("class" => "slds-select", 
+					"div" => array("class" => "slds-form-element__control"),"label" => array("class" => "slds-form-element__label"))); ?>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+				<?php echo $this->Form->input('discipline_id', array("class" => "slds-select", 
+					"div" => array("class" => "slds-form-element__control"),"label" => array("class" => "slds-form-element__label"))); ?>
+		</div>
+		<div class="col-md-6">
+			<?php echo $this->Form->input('elegibility_id', array("class" => "slds-select", 
+					"div" => array("class" => "slds-form-element__control"),"label" => array("class" => "slds-form-element__label"))); ?>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+				<?php echo $this->Form->input('description', array("class" => "slds-textarea", 
+					"div" => array("class" => "slds-form-element__control"),"label" => array("class" => "slds-form-element__label"))); ?>
+		</div>
+	</div>
+	<?php echo $this->Form->end(__('Save')); ?>
+	<!--?php echo $this->Form->button('Save', array("class" => "slds-button slds-button--neutral")); ?>-->
 </div>
+
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Fellowship.id')), array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Fellowship.id')))); ?></li>
+		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Fellowship.id')), 
+			array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Fellowship.id')))); ?></li>
 		<li><?php echo $this->Html->link(__('List Fellowships'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Degrees'), array('controller' => 'degrees', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Degree'), array('controller' => 'degrees', 'action' => 'add')); ?> </li>

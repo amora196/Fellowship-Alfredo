@@ -59,8 +59,7 @@ class FellowshipsController extends AppController {
 		$disciplines = $this->Fellowship->Discipline->find('list');
 		$elegibilities = $this->Fellowship->Elegibility->find('list');
 		$users = $this->Fellowship->User->find('list');
-		$users = $this->Fellowship->User->find('list');
-		$this->set(compact('degrees', 'disciplines', 'elegibilities', 'users', 'users'));
+		$this->set(compact('degrees', 'disciplines', 'elegibilities', 'users'));
 	}
 
 /**
@@ -89,8 +88,7 @@ class FellowshipsController extends AppController {
 		$disciplines = $this->Fellowship->Discipline->find('list');
 		$elegibilities = $this->Fellowship->Elegibility->find('list');
 		$users = $this->Fellowship->User->find('list');
-		$users = $this->Fellowship->User->find('list');
-		$this->set(compact('degrees', 'disciplines', 'elegibilities', 'users', 'users'));
+		$this->set(compact('degrees', 'disciplines', 'elegibilities', 'users'));
 	}
 
 /**

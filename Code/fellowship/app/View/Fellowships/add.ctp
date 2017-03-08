@@ -4,7 +4,7 @@
 		<legend><?php echo __('Add Fellowship'); ?></legend>
 	<?php
 		echo $this->Form->input('title');
-		echo $this->Form->input('body');
+		echo $this->Form->input('description');
 		echo $this->Form->input('degree_id');
 		echo $this->Form->input('discipline_id');
 		echo $this->Form->input('elegibility_id');

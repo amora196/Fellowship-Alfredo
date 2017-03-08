@@ -19,7 +19,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
 <html>
-<head>
+<!--<head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
 		<?php echo $cakeDescription ?>:
@@ -34,30 +34,78 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-</head>
+</head>-->
+                <head>
+        <?= $this->Html->charset() ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            <?= $cakeDescription ?>:
+            <?= $this->fetch('title') ?>
+        </title>
+        <?= $this->Html->meta('icon') ?>
+
+        <!-- lib/CSS-->
+        <?php
+            echo $this->Html->css('cake.generic');
+            echo $this->Html->css('bootstrap.min'); // Bootstrap
+            echo $this->Html->css('metisMenu.min'); // MetisMenu
+            echo $this->Html->css('sb-admin-2.min'); // Custom Theme
+            echo $this->Html->css('font-awesome.min'); // Custom Fonts    
+            echo $this->Html->css('bootstrap-social'); // Social Buttons
+
+            /*Datatables*/
+            echo $this->Html->css('datatables/dataTables.bootstrap');
+            echo $this->Html->css('datatables/dataTables.responsive');
+
+            echo $this->Html->css('morris'); // Morris Charts
+            echo $this->Html->css('salesforce-lightning-design-system'); // Salesforce
+            echo $this->Html->css('styles'); // Custom styles
+
+        ?>
+        <!-- End lib/CSS -->
+
+        <!--lib/JS-->
+        <?php
+            echo $this->Html->script('jquery.min.js'); // jQuery
+            echo $this->Html->script('bootstrap.min.js'); // Bootstrap
+            echo $this->Html->script('metisMenu.min.js'); // MetisMenu
+            echo $this->Html->script('sb-admin-2.min.js'); // Custom Theme
+
+            /*Datatables*/
+            echo $this->Html->script('datatables/jquery.dataTables.min.js');
+            echo $this->Html->script('datatables/dataTables.bootstrap.min.js');
+            echo $this->Html->script('datatables/dataTables.responsive.js');
+
+            /*Morris Chart*/
+    //        echo $this->Html->script('morrisChart/raphael.min.js');
+    //        echo $this->Html->script('morrisChart/morris.min.js');
+    //        echo $this->Html->script('morrisChart/morris-data.js');
+
+            /*Flot Charts*/
+    //        echo $this->Html->script('flotChart/excanvas.min.js');
+    //        echo $this->Html->script('flotChart/jquery.flot.js');
+    //        echo $this->Html->script('flotChart/jquery.flot.pie.js');
+    //        echo $this->Html->script('flotChart/jquery.flot.resize.js');
+    //        echo $this->Html->script('flotChart/jquery.flot.time.js');
+    //        echo $this->Html->script('flotChart/jquery.flot.tooltip.min.js');
+    //        echo $this->Html->script('flotChart/flot-data.js');
+        ?>
+        <!--End of lib/JS-->
+
+        <?= $this->fetch('meta') ?>
+        <?= $this->fetch('css') ?>
+        <?= $this->fetch('script') ?>
+    </head>
 <body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
-		</div>
-		<div id="content">
-
-			<?php echo $this->Flash->render(); ?>
-
-			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false, 'id' => 'cake-powered')
-				);
-			?>
-			<p>
-				<?php echo $cakeVersion; ?>
-			</p>
-		</div>
-	</div>
-	<?php echo $this->element('sql_dump'); ?>
+    <div id="container">
+        <div id="content">
+            <?php include('navigation.ctp'); ?>
+            <?php echo $this->Flash->render(); ?>
+            <?php echo $this->fetch('content'); ?>
+        </div>
+    </div>
+        
 </body>
 </html>
+
+     

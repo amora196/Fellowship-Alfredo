@@ -14,28 +14,28 @@ class UsersController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-        
-        public function beforeFilter() {
-            parent::beforeFilter();
-            $this->Auth->allow('add');
-        }
 
-        public function login() {
-            if ($this->request->is('post')) 
-            {
-                if ($this->Auth->login()) 
-                {
-                    return $this->redirect($this->Auth->redirectUrl());
-                }
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('add');
+	}
 
-                $this->Session->setFlash(__('Invalid username or password, try again'));
-            }
-        }
+	public function login() {
+		if ($this->request->is('post')) 
+		{
+			if ($this->Auth->login()) 
+			{
+				return $this->redirect($this->Auth->redirectUrl());
+			}
 
-        public function logout() {
-            $this->Auth->logout();
-            $this->redirect('/fellowships/index');
-        } 
+			$this->Session->setFlash(__('Invalid username or password, try again'));
+		}
+	}
+
+	public function logout() {
+		$this->Auth->logout();
+		$this->redirect('/fellowships/index');
+	} 
 
 /**
  * index method

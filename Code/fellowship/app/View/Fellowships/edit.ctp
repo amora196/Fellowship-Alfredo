@@ -1,9 +1,11 @@
-
 <div class="fellowships form">
 	<!--?php echo $this->element('page_header', array('userLink' => $userLink, "title" => $title, 'buttons' => $buttons, 'escape' => false)); ?>-->
 
 	<?php echo $this->Form->create('Fellowship', array("class" => "form-horizontal")); ?>
 			<legend><?php echo __('Edit Fellowship'); ?></legend>
+
+	<?php echo $this->Form->input('id'); ?>
+
     <h3 class="slds-section-title--divider">Main Information</h3>
 	<div class="row">
 		<div class="col-md-6">
@@ -31,8 +33,8 @@
 					"div" => array("class" => "slds-form-element__control"),"label" => array("class" => "slds-form-element__label"))); ?>
 		</div>
 	</div>
-	<?php echo $this->Form->end(__('Save')); ?>
-	<!--?php echo $this->Form->button('Save', array("class" => "slds-button slds-button--neutral")); ?>-->
+	<!--?php echo $this->Form->end(__('Save')); ?>-->
+	<?php echo $this->Form->button('Save', array("class" => "slds-button slds-button--neutral")); ?>
 </div>
 
 <div class="actions">

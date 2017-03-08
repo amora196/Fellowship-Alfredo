@@ -7,8 +7,8 @@
 		echo $this->Form->input('first_name');
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
-//		echo $this->Form->input('role');
-//		echo $this->Form->input('Fellowship');
+		echo $this->Form->input('role_id');
+		echo $this->Form->input('Fellowship');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -18,7 +18,7 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-<!--		<li><?php echo $this->Html->link(__('List Fellowships'), array('controller' => 'fellowships', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Fellowship'), array('controller' => 'fellowships', 'action' => 'add')); ?> </li>-->
+		<li><?php echo $this->Html->link(__('List Fellowships'), array('controller' => 'fellowships', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Fellowship'), array('controller' => 'fellowships', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

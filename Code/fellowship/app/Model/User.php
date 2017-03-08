@@ -3,6 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * User Model
  *
+ * @property Role $Role
  * @property Fellowship $Fellowship
  * @property Fellowship $Fellowship
  */
@@ -13,12 +14,11 @@ class User extends AppModel {
  *
  * @var array
  */
-    
-        public function beforeSave($options = array()) {
-            $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
-            return true;
-        }
-        
+
+	public function beforeSave($options = array()) {
+		$this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+		return true;
+	}
 	public $validate = array(
 		'last_name' => array(
 			'notBlank' => array(
@@ -43,6 +43,21 @@ class User extends AppModel {
 	);
 
 	// The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'Role' => array(
+			'className' => 'Role',
+			'foreignKey' => 'role_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
 
 /**
  * hasMany associations

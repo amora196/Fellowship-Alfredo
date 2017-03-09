@@ -78,7 +78,7 @@
             responsive: true
         });
 
-		$("table").removeAttr("style");
+		$("table").removeAttr("style").removeClass("dataTable");
 
     });
 </script>

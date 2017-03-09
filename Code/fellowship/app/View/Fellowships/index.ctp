@@ -3,7 +3,7 @@
 	<div class="panel panel-default">
 		<!-- /.panel-heading -->
 		<div class="panel-body">
-			<table width="100%" class="slds-table slds-table--bordered slds-table--cell-buffer" id="myDataTable">
+			<table class="slds-table slds-table--bordered slds-table--cell-buffer" id="myDataTable">
 				<thead>
 					<tr class="slds-text-title--caps">
 						<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('title'); ?></th>
@@ -78,6 +78,7 @@
             responsive: true
         });
 
-		$("table.dataTable").removeClass("dataTable");
+		$("table").removeAttr("style");
+
     });
 </script>

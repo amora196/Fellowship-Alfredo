@@ -4,16 +4,14 @@
 	$buttons = array(
 			$this->Html->link(__("Edit"), array('action' => 'edit', $fellowship['Fellowship']['id']), array("class" => "slds-button slds-button--neutral")),
 			$this->Form->postLink(__('Delete'), array('action' => 'delete', $fellowship['Fellowship']['id']), 
-				array("class" => "slds-button slds-button--neutral", 'confirm' => __('Are you sure you want to delete # %s?', $fellowship['Fellowship']['id']))),
-			$this->Html->link(__('List'), array('action' => 'index'), array("class" => "slds-button slds-button--neutral"))
+				array("class" => "slds-button slds-button--neutral", 'confirm' => __('Are you sure you want to delete # %s?', $fellowship['Fellowship']['id'])))
 		);
 ?>
 
-<div class="fellowships view" style="padding: 0">
+<div class="fellowships view">
 	<?php echo $this->element('page_header', array('userLink' => $userLink, "title" => $title, 'buttons' => $buttons, 'escape' => false)); ?>
 
 	<div class="main-screen">
-		<h3 class="slds-section-title--divider read-form">Main Information</h3>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="slds-form-element slds-has-divider--bottom">

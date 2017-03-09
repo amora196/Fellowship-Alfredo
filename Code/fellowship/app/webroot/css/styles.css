@@ -9,6 +9,24 @@ html {
     background: none;
 }
 
+form div{
+    clear: none;
+    margin-bottom: 0;
+    padding: .25rem;
+}
+
+form {
+    margin: 0;
+    width: 100%;
+}
+
+table.dataTable {
+     clear: both; */
+    /* margin-top: 6px !important; */
+    /* margin-bottom: 6px !important; */
+    /* max-width: none !important; 
+}
+
 /*Trigger Link text*/
 
 .triggerLinkText {
@@ -22,15 +40,23 @@ html {
     display: inline-block;
 }
 
+a{
+    font-weight: normal;
+}
 
-/*Timeline Beforle vertical line (Salesforce)*/
+table.dataTable thead > tr > th {
+    padding: 8px;
+
+}
+
+th a {
+    display: inline-block;
+}
 
 .slds-media--timeline:before {
     top: 25px;
     z-index: 0;
 }
-
-/*Salesforce Section Title Divider overridden for slds-form-element__control read-only-view*/
 
 .slds-section-title--divider.edit-form {
     margin: 0 -1rem 8px !important;
@@ -41,7 +67,6 @@ html {
 }
 
 
-/*Margin bottom for forms based on salesforce UI*/
 
 .sectionHeader {
     font-size: 1.125rem;
@@ -324,6 +349,7 @@ body.mini-navbar #page-wrapper {
 
 .slds-page-header {
     padding: 1.5rem 1.5rem;
+    border: 1px solid #d8dde6;
 }
 
 .slds-spinner {

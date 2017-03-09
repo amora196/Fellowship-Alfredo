@@ -3,18 +3,18 @@
 	<div class="panel panel-default">
 		<!-- /.panel-heading -->
 		<div class="panel-body">
-			<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+			<table width="100%" class="slds-table slds-table--bordered slds-table--cell-buffer" id="myDataTable">
 				<thead>
-					<tr>
-						<th><?php echo $this->Paginator->sort('title'); ?></th>
-						<th><?php echo $this->Paginator->sort('description'); ?></th>
-						<th><?php echo $this->Paginator->sort('created'); ?></th>
-						<th><?php echo $this->Paginator->sort('modified'); ?></th>
-						<th><?php echo $this->Paginator->sort('degree_id'); ?></th>
-						<th><?php echo $this->Paginator->sort('discipline_id'); ?></th>
-						<th><?php echo $this->Paginator->sort('elegibility_id'); ?></th>
+					<tr class="slds-text-title--caps">
+						<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('title'); ?></th>
+						<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('description'); ?></th>
+						<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('created'); ?></th>
+						<th class="slds-is-sortable slds-text-title--caps"scope="col"><?php echo $this->Paginator->sort('modified'); ?></th>
+						<th class="slds-is-sortable slds-text-title--caps"scope="col"><?php echo $this->Paginator->sort('degree_id'); ?></th>
+						<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('discipline_id'); ?></th>
+						<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('elegibility_id'); ?></th>
 						<?php if (AuthComponent::user()) : ?>
-							<th class="actions"><?php echo __('Actions'); ?></th>
+							<th scope="col" class="actions"><?php echo __('Actions'); ?></th>
 						<?php endif; ?>
 					</tr>
 				</thead>
@@ -73,9 +73,11 @@
 
 <script>
     $(document).ready(function() {
-        $('#dataTables-example').DataTable().destroy();
-        $('#dataTables-example').DataTable({
+        $('#myDataTable').DataTable().destroy();
+        $('#myDataTable').DataTable({
             responsive: true
         });
+
+		$("table.dataTable").removeClass("dataTable");
     });
 </script>

@@ -1,12 +1,21 @@
-<div class="fellowships form">
-	<!--?php echo $this->element('page_header', array('userLink' => $userLink, "title" => $title, 'buttons' => $buttons, 'escape' => false)); ?>-->
+<?php 
+	$userLink = $this->Html->link(__($fellowship['User']['first_name'] . $fellowship['User']['last_name']), array('controller' => 'users', 'action' => 'view', $fellowship['User']['id']));
+	$title = h($fellowship['Fellowship']['title']);
+	$buttons = array(
+			$this->Form->button('Save', array("class" => "slds-button slds-button--neutral", "onclick" => "submitForm()")),
+			$this->Html->link(__("Cancel"), array('action' => 'view', $fellowship['Fellowship']['id']), array("class" => "slds-button slds-button--neutral"))
+		);
+?>
 
-	<?php echo $this->Form->create('Fellowship', array("class" => "form-horizontal")); ?>
-			<legend><?php echo __('Edit Fellowship'); ?></legend>
+<div class="fellowships form">
+	
+	<!--<legend><?php echo __('Edit Fellowship'); ?></legend>-->
+	<?php echo $this->element('page_header', array('userLink' => $userLink, "title" => $title, 'buttons' => $buttons, 'escape' => false)); ?>
+
+	<?php echo $this->Form->create('Fellowship', array("class" => "form-horizontal", "role" => "form")); ?>
 
 	<?php echo $this->Form->input('id'); ?>
 
-    <h3 class="slds-section-title--divider">Main Information</h3>
 	<div class="row">
 		<div class="col-md-6">
 				<?php echo $this->Form->input('title', array("class" => "slds-input", 
@@ -29,12 +38,10 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-				<?php echo $this->Form->input('description', array("class" => "slds-textarea", 
+				<?php echo $this->Form->input('description', array("class" => "slds-textarea", "rows" => 5,
 					"div" => array("class" => "slds-form-element__control"),"label" => array("class" => "slds-form-element__label"))); ?>
 		</div>
 	</div>
-	<!--?php echo $this->Form->end(__('Save')); ?>-->
-	<?php echo $this->Form->button('Save', array("class" => "slds-button slds-button--neutral")); ?>
 </div>
 
 <div class="actions">
@@ -54,3 +61,9 @@
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+
+<script>
+	function submitForm(){
+		$('form#FellowshipEditForm').submit();
+	}
+</script>

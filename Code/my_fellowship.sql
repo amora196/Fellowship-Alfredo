@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2017 at 09:07 AM
+-- Generation Time: Mar 10, 2017 at 07:48 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -135,7 +135,7 @@ CREATE TABLE `fellowships` (
 
 INSERT INTO `fellowships` (`id`, `title`, `description`, `created`, `modified`, `degree_id`, `discipline_id`, `elegibility_id`, `user_id`) VALUES
 (5, 'Donald Trump Fellowship', 'Donald Trump Organization is providing this fellowship.', '2017-02-03 20:25:01', '2017-02-12 07:30:43', 3, 2, 1, NULL),
-(6, 'Faculdade do Rio de Jaineiro Intercambio Fellowshi', 'This fellowship is funded by FRJ', '2017-02-03 20:59:45', '2017-02-12 07:29:51', 1, 2, 3, NULL),
+(6, 'Faculdade do Rio de Jaineiro Intercambio Fellowshi', 'This fellowship is funded by FRJssssd asdasdasdasdasdasdasdasd', '2017-02-03 20:59:45', '2017-03-08 09:35:08', 1, 2, 3, 1),
 (9, 'NYU Partnership with FIU Fellowship', 'This fellowship is funded by NYU and FIU.', '2017-02-07 01:30:56', '2017-02-12 07:28:42', 4, 3, 1, 1),
 (10, 'FIU Research Fellowship', 'This Fellowship is sponsored by the NSF.', '2017-02-12 07:22:18', '2017-02-12 07:22:18', 5, 1, 2, 1),
 (12, 'FIU Fishbowl Fellowship', 'This Fishbowl Fellowship is funded by the Sea World.', '2017-02-12 08:44:16', '2017-02-12 08:44:16', 3, 3, 3, 1),
@@ -143,7 +143,7 @@ INSERT INTO `fellowships` (`id`, `title`, `description`, `created`, `modified`, 
 (14, 'NASDAQ Fellowship', 'This fellowship is worth $400,000.', '2017-02-12 08:47:46', '2017-02-12 08:47:46', 1, 1, 1, 1),
 (16, 'Star of David Fellowship', 'This fellowship is worth $7,000.', '2017-02-12 08:50:23', '2017-02-12 08:50:23', 3, 3, 3, 1),
 (17, 'Clean Energy Fellowship', 'This fellowship is worth $400.', '2017-02-12 08:51:20', '2017-03-08 03:49:04', 1, 1, 1, 1),
-(18, 'Automobile Manufacturer Fellowship', 'Test Descritption', '2017-02-12 08:52:10', '2017-03-08 03:47:33', 1, 1, 1, 1),
+(18, 'Automobile Manufacturer Fellowship', 'Test Descritption', '2017-02-12 08:52:10', '2017-03-09 23:30:07', 3, 3, 5, 10),
 (19, 'Solar Energy Fellowship', 'This fellowship is worth $4,000.', '2017-02-12 08:52:45', '2017-02-12 08:52:45', 1, 2, 2, 1),
 (20, 'Intel Fellowship', '$1,000', '2017-02-12 08:53:21', '2017-02-12 08:53:21', 2, 1, 1, 1);
 
@@ -155,14 +155,14 @@ INSERT INTO `fellowships` (`id`, `title`, `description`, `created`, `modified`, 
 
 CREATE TABLE `roles` (
   `id` int(10) UNSIGNED NOT NULL,
-  `type` varchar(45) DEFAULT NULL
+  `name` varchar(45) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `roles` (`id`, `type`) VALUES
+INSERT INTO `roles` (`id`, `name`) VALUES
 (1, 'Admin'),
 (2, 'Fellow'),
 (3, 'Regular');
@@ -313,7 +313,7 @@ ALTER TABLE `elegibilities`
 -- AUTO_INCREMENT for table `fellowships`
 --
 ALTER TABLE `fellowships`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `roles`
 --

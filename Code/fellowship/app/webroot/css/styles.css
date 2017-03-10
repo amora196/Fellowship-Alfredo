@@ -36,6 +36,15 @@ th a {
     display: inline-block;
 }
 
+.slds-table--bordered tbody td, th {
+    border-bottom: 0;
+}
+
+.slds-table tbody tr {
+    background-color: #fff;
+    border: 0;
+}
+
 .slds-media--timeline:before {
     top: 25px;
     z-index: 0;
@@ -48,8 +57,6 @@ th a {
 .slds-section-title--divider.read-form {
     margin: 0 0 8px !important;
 }
-
-
 
 .sectionHeader {
     font-size: 1.125rem;

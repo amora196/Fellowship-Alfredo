@@ -1,57 +1,61 @@
-<div class="fellowships index">
-	<legend>Fellowship Database</legend>
-	<div class="panel panel-default">
-		<!-- /.panel-heading -->
-		<div class="panel-body">
-			<table class="slds-table slds-table--bordered slds-table--cell-buffer" id="myDataTable">
-				<thead>
-					<tr class="slds-text-title--caps">
-						<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('title'); ?></th>
-						<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('description'); ?></th>
-						<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('created'); ?></th>
-						<th class="slds-is-sortable slds-text-title--caps"scope="col"><?php echo $this->Paginator->sort('modified'); ?></th>
-						<th class="slds-is-sortable slds-text-title--caps"scope="col"><?php echo $this->Paginator->sort('degree_id'); ?></th>
-						<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('discipline_id'); ?></th>
-						<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('elegibility_id'); ?></th>
-						<?php if (AuthComponent::user()) : ?>
-							<th scope="col" class="actions"><?php echo __('Actions'); ?></th>
-						<?php endif; ?>
-					</tr>
-				</thead>
-				<tbody>
-				<?php foreach ($fellowships as $fellowship): ?>
-						<tr>
-								<td><?php echo $this->Html->link($fellowship['Fellowship']['title'], array('action' => 'view', $fellowship['Fellowship']['id'])); ?>&nbsp;</td>
-								<td><?php echo h($fellowship['Fellowship']['description']); ?>&nbsp;</td>
-								<td ><?php echo date('m/d/Y', strtotime($fellowship['Fellowship']['created'])); ?>&nbsp;</td>
-								<td><?php echo date('m/d/Y', strtotime($fellowship['Fellowship']['modified'])); ?>&nbsp;</td>
-								<td>
-										<?php echo h($fellowship['Degree']['name']); ?>
-								</td>
-								<td>
-										<?php echo h($fellowship['Discipline']['name']); ?>
-								</td>
-								<td>
-										<?php echo h($fellowship['Elegibility']['name']); ?>
-								</td>
-								
-								<?php if (AuthComponent::user()) : ?>
-									<td class="actions">
-										<!--?php echo $this->Html->link(__('View'), array('action' => 'view', $fellowship['Fellowship']['id'])); ?>
-										?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $fellowship['Fellowship']['id'])); ?>-->
-										<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $fellowship['Fellowship']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $fellowship['Fellowship']['id']))); ?>
-									</td>
-								<?php endif; ?>
 
-								
-						</tr>
-				<?php endforeach; ?>
-				</tbody>
-			</table>
-			<!-- /.table-responsive -->
+<div class="fellowships index">
+	<div class="row">
+		<div class="col-md-9">
+			<legend>Fellowship Database</legend>
 		</div>
-		<!-- /.panel-body -->
+		<div class="col-md-3" style="text-align: right;">
+			<?php echo $this->Html->link(__("Add"), array('action' => 'add'), array("class" => "slds-button slds-button--neutral")); ?>
+		</div>
 	</div>
+	<table class="slds-table slds-table--bordered slds-table--fixed-layout" role="grid" id="myDataTable">
+		<thead>
+			<tr class="slds-text-title--caps">
+				<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('title'); ?></th>
+				<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('description'); ?></th>
+				<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('created'); ?></th>
+				<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('modified'); ?></th>
+				<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('degree_id'); ?></th>
+				<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('discipline_id'); ?></th>
+				<th class="slds-is-sortable slds-text-title--caps" scope="col"><?php echo $this->Paginator->sort('elegibility_id'); ?></th>
+				<?php if (AuthComponent::user()) : ?>
+					<th scope="col" class="actions"><?php echo __('Actions'); ?></th>
+				<?php endif; ?>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach ($fellowships as $fellowship): ?>
+				<tr>
+						<td class="slds-truncate">
+							<?php echo $this->Html->link($fellowship['Fellowship']['title'], array('action' => 'view', $fellowship['Fellowship']['id'])); ?>
+						</td>
+						<td class="slds-truncate"><?php echo h($fellowship['Fellowship']['description']); ?></td>
+						<td class="slds-truncate"><?php echo date('m/d/Y', strtotime($fellowship['Fellowship']['created'])); ?></td>
+						<td class="slds-truncate"><?php echo date('m/d/Y', strtotime($fellowship['Fellowship']['modified'])); ?></td>
+						<td class="slds-truncate">
+								<?php echo h($fellowship['Degree']['name']); ?>
+						</td>
+						<td class="slds-truncate">
+								<?php echo h($fellowship['Discipline']['name']); ?>
+						</td>
+						<td class="slds-truncate">
+								<?php echo h($fellowship['Elegibility']['name']); ?>
+						</td>
+						
+						<?php if (AuthComponent::user()) : ?>
+							<td class="actions">
+								<?php echo $this->Html->link("", array('action' => 'edit', $fellowship['Fellowship']['id']), array("class"=>"fa fa-edit", "title" => "Edit")); ?>
+								</i>
+								<?php echo $this->Form->postLink("",array('action' => 'delete', $fellowship['Fellowship']['id']),
+									array("class"=>"fa fa-trash-o", "title" => "Delete", 'confirm' => __('Are you sure you want to delete # %s?', $fellowship['Fellowship']['id']))); ?>
+							</td>
+						<?php endif; ?>
+
+						
+				</tr>
+		<?php endforeach; ?>
+		</tbody>
+	</table>
 </div>
 
 <div class="actions">
@@ -77,8 +81,5 @@
         $('#myDataTable').DataTable({
             responsive: true
         });
-
-		$("table").removeAttr("style").removeClass("dataTable");
-
     });
 </script>

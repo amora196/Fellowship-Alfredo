@@ -34,7 +34,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-</head>-->
+</head>
                 <head>
         <?= $this->Html->charset() ?>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -108,4 +108,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </body>
 </html>
 
-     
+<script>
+    $(document).ready(function() {
+        $('#myDataTable').DataTable().destroy();
+        $('#myDataTable').DataTable({
+            responsive: true
+        });
+debugger;
+        var temp = '<?php echo AuthComponent::user("role_id") ?>'
+    });
+</script>

@@ -1,9 +1,9 @@
 <?php 
-	$userLink = $this->Html->link(__($fellowship['User']['first_name'] . $fellowship['User']['last_name']), array('controller' => 'users', 'action' => 'view', $fellowship['User']['id']));
+	$userLink = $this->Html->link(__($fellowship['User']['first_name'] .' '. $fellowship['User']['last_name']), array('controller' => 'users', 'action' => 'view', $fellowship['User']['id']));
 	$title = h($fellowship['Fellowship']['title']);
 	$buttons = array(
-			$this->Form->button('Save', array("class" => "slds-button slds-button--neutral", "onclick" => "submitForm()")),
-			$this->Html->link(__("Cancel"), array('action' => 'view', $fellowship['Fellowship']['id']), array("class" => "slds-button slds-button--neutral"))
+			$this->Form->button('Save', array("class" => "slds-button slds-button--neutral", "id" => "btnSave", "onclick" => "submitForm()")),
+			$this->Html->link(__("Cancel"), array('action' => 'view', $fellowship['Fellowship']['id']), array("class" => "slds-button slds-button--neutral", "id" => "btnCancel"))
 		);
 ?>
 
@@ -47,18 +47,14 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Fellowship.id')), 
-			array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Fellowship.id')))); ?></li>
 		<li><?php echo $this->Html->link(__('List Fellowships'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Degrees'), array('controller' => 'degrees', 'action' => 'index')); ?> </li>
+		<!--<li><?php echo $this->Html->link(__('List Degrees'), array('controller' => 'degrees', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Degree'), array('controller' => 'degrees', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Disciplines'), array('controller' => 'disciplines', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Discipline'), array('controller' => 'disciplines', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Elegibilities'), array('controller' => 'elegibilities', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Elegibility'), array('controller' => 'elegibilities', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Elegibility'), array('controller' => 'elegibilities', 'action' => 'add')); ?> </li>-->
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 

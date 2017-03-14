@@ -17,7 +17,7 @@ class UsersController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('add');
+		$this->Auth->allow('register');
 	}
 
 	public function login() {
@@ -78,7 +78,55 @@ class UsersController extends AppController {
 			}
 		}
 		$fellowships = $this->User->Fellowship->find('list');
-		$this->set(compact('fellowships'));
+		$roles = $this->User->Role->find('list');
+		$this->set(compact('fellowships', 'roles'));
+	}
+
+/**
+ * register method
+ *
+ * @return void
+ */
+	public function register() {
+		if ($this->request->is('post')) {
+			$this->User->create();
+			$this->User->data["User"]["role_id"] = 3;
+			if ($this->User->save($this->request->data)) {
+				$this->Flash->success(__('The user has been created.'));
+				return $this->redirect(array('action' => 'login'));
+			} else {
+				$this->Flash->error(__('The user could not be created. Please, try again.'));
+			}
+		}
+		$roles = $this->User->Role->find('list');
+		$this->set(compact('roles'));
+	}
+
+/**
+ * profile method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function profile($id = null) {
+		if (!$this->User->exists($id)) {
+			throw new NotFoundException(__('Invalid user'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->User->save($this->request->data)) {
+				$this->Flash->success(__('Your profile has been updated.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Flash->error(__('Your profile could not be updated. Please, try again.'));
+			}
+		} else {
+			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+			$this->request->data = $this->User->find('first', $options);
+		}
+
+		$user = $this->User->find('first', $options);
+		$this->set(compact('user'));
 	}
 
 /**
@@ -109,6 +157,8 @@ class UsersController extends AppController {
 		$fellowships = $this->User->Fellowship->find('list');
 		$this->set(compact('fellowships', 'user', 'roles'));
 	}
+
+	
 
 /**
  * delete method

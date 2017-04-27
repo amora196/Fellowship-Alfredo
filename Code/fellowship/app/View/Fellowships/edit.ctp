@@ -1,5 +1,4 @@
 <?php 
-	$userLink = $this->Html->link(__($fellowship['User']['first_name'] .' '. $fellowship['User']['last_name']), array('controller' => 'users', 'action' => 'view', $fellowship['User']['id']));
 	$title = h($fellowship['Fellowship']['title']);
 	$buttons = array(
 			$this->Form->button('Save', array("class" => "slds-button slds-button--neutral", "id" => "btnSave", "onclick" => "submitForm()")),
@@ -10,7 +9,7 @@
 <div class="fellowships form">
 	
 	<!--<legend><?php echo __('Edit Fellowship'); ?></legend>-->
-	<?php echo $this->element('page_header', array('userLink' => $userLink, "title" => $title, 'buttons' => $buttons, 'escape' => false)); ?>
+	<?php echo $this->element('page_header', array("title" => $title, 'buttons' => $buttons, 'escape' => false)); ?>
 
 	<?php echo $this->Form->create('Fellowship', array("class" => "form-horizontal", "role" => "form")); ?>
 

@@ -6,7 +6,7 @@
                     <h3 class="panel-title">Please Sign In</h3>
                 </div>
                 <div class="panel-body">
-                    <?= $this->Form->create('User')?>
+                    <?= $this->Form->create('User', array("class" => "form-horizontal", "role" => "form"))?>
                         <fieldset>
                             <div class="form-group">
                                 <?= $this->Form->input('username', array('label' => false, 'placeholder'=>'Username', 'class'=>'form-control', 'autofocus')); ?>

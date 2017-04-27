@@ -28,7 +28,7 @@ class UsersController extends AppController {
 				return $this->redirect('/fellowships/index');
 			}
 
-			$this->Session->setFlash(__('Invalid username or password, try again'));
+			$this->Flash->error(__('Invalid username or password, try again'));
 		}
 	}
 

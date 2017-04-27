@@ -97,8 +97,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         <?= $this->fetch('script') ?>
     </head>
 <body>
-    <div id="container">
-        <div id="content">
+    <div id="container" class="container">
+        <div>
             <?php include('navigation.ctp'); ?>
             <?php echo $this->Flash->render(); ?>
             <?php echo $this->fetch('content'); ?>

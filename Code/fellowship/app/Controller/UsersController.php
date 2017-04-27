@@ -134,8 +134,13 @@ class UsersController extends AppController {
 			$this->request->data = $this->User->find('first', $options);
 		}
 
+		$degrees = $this->User->Fellowship->Degree->find('list');
+		$disciplines = $this->User->Fellowship->Discipline->find('list');
+		$eligibilities = $this->User->Fellowship->Elegibility->find('list');
+
+
 		$user = $this->User->find('first', $options);
-		$this->set(compact('user'));
+		$this->set(compact('user', 'degrees', 'disciplines', 'eligibilities'));
 	}
 
 /**

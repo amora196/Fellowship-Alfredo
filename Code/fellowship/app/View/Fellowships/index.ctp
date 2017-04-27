@@ -39,7 +39,7 @@
 		</div>
 		<?php endif;?>
 	</div>
-	<?php echo $this->element('table', array('headerCols' => $headerCols, "rows" => $rows, 'tableId' => 'myDataTable','escape' => false)); ?>
+	<?php echo $this->element('table', array('headerCols' => $headerCols, "rows" => $rows, 'tableId' => 'myDataTable','escape' => false, 'isUserAllowed' => false)); ?>
 </div>
 
 <div class="actions">

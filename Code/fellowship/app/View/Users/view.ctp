@@ -73,9 +73,11 @@
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
+	<?php if(AuthComponent::user("role_id") == 1) :?>
 	<ul>
 		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?> </li>
 	</ul>
+	<?php endif;?>
 </div>
 
 <div class="related form">
@@ -108,7 +110,7 @@
 		);
 	}
 ?>
-	<?php echo $this->element('table', array('headerCols' => $headerCols, "rows" => $rows, 'tableId' => 'myDataTable','escape' => false)); ?>
+	<?php echo $this->element('table', array('headerCols' => $headerCols, "rows" => $rows, 'tableId' => 'myDataTable','escape' => false, 'isUserAllowed' => AuthComponent::user("role_id") != 3)); ?>
 
 <?php endif; ?>
 

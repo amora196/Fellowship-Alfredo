@@ -53,8 +53,5 @@ foreach($users as $user) {
 		<?php endif;
 ?>
 	</div>
-	<?php echo $this->element('table', array('headerCols' => $headerCols, "rows" => $rows, 
-/*'actions' => $actions, */
-'tableId' => 'myDataTable','escape' => false));
-?>
+	<?php echo $this->element('table', array('headerCols' => $headerCols, "rows" => $rows, 'tableId' => 'myDataTable','escape' => false, 'isUserAllowed' => false)); ?>
 </div>

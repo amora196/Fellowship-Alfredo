@@ -1,6 +1,4 @@
 <?php 
-    $isUserAllowed = false;
-
     $isUserAllowed = !!$isUserAllowed ? $isUserAllowed : AuthComponent::user('role_id') == "1";
 ?>
 

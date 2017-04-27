@@ -386,3 +386,9 @@ a:hover.navbar-items{
 .dropdown>a:focus{
     background-color: transparent !important;
 }
+
+.container {
+    width: auto !important;
+    margin-right: 150px !important;
+    margin-left: 150px !important; 
+}

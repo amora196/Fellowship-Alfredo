@@ -39,9 +39,10 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<?php if(AuthComponent::user("role_id") == 1) :?>
 		<ul>
+			<li><?php echo $this->Html->link(__('New Discipline'), array('action' => 'add')); ?></li>
 			<li><?php echo $this->Html->link(__('List Fellowships'), array('controller' => 'fellowships', 'action' => 'index')); ?> </li>
-			<li><?php echo $this->Html->link(__('List Degree'), array('controller' => 'degrees', 'action' => 'index')); ?> </li>
-			<li><?php echo $this->Html->link(__('List Elegibilities'), array('controller' => 'elegibilities', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('List Degrees'), array('controller' => 'degrees', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('List Eligibilities'), array('controller' => 'elegibilities', 'action' => 'index')); ?> </li>
 			<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		</ul>
 	<?php endif;?>

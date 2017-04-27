@@ -1,5 +1,5 @@
 <div class="elegibilities view">
-<h2><?php echo __('Elegibility'); ?></h2>
+<h2><?php echo __('Eligibility'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -36,7 +36,7 @@
 		<th><?php echo __('Modified'); ?></th>
 		<th><?php echo __('Degree Id'); ?></th>
 		<th><?php echo __('Discipline Id'); ?></th>
-		<th><?php echo __('Elegibility Id'); ?></th>
+		<th><?php echo __('Eligibility Id'); ?></th>
 		<th><?php echo __('User Id'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>

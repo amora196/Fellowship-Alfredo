@@ -5,7 +5,7 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('List Fellowships'), array('controller' => 'fellowships', 'action' => 'index'));
 ?> </li>
-		<li><?php echo $this->Html->link(__('List Degree'), array('controller' => 'degrees', 'action' => 'index'));
+		<li><?php echo $this->Html->link(__('List Degrees'), array('controller' => 'degrees', 'action' => 'index'));
 ?> </li>
 		<li><?php echo $this->Html->link(__('List Disciplines'), array('controller' => 'disciplines', 'action' => 'index'));
 ?> </li>

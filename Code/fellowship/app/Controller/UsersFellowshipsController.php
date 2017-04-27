@@ -45,47 +45,64 @@ class UsersFellowshipsController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	// public function add() {
+	// 	if ($this->request->is('post')) {
+	// 		$this->UsersFellowship->create();
+	// 		if ($this->UsersFellowship->save($this->request->data)) {
+	// 			$this->Flash->success(__('The users fellowship has been saved.'));
+	// 			return $this->redirect(array('action' => 'index'));
+	// 		} else {
+	// 			$this->Flash->error(__('The users fellowship could not be saved. Please, try again.'));
+	// 		}
+	// 	}
+	// 	$users = $this->UsersFellowship->User->find('list');
+	// 	$fellowships = $this->UsersFellowship->Fellowship->find('list');
+	// 	$this->set(compact('users', 'fellowships'));
+	// }
+
+	public function add($id)
+	{
+		$this->loadModel('UsersFellowships');
+		
 		if ($this->request->is('post')) {
-			$this->UsersFellowship->create();
-			if ($this->UsersFellowship->save($this->request->data)) {
-				$this->Flash->success(__('The users fellowship has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Flash->error(__('The users fellowship could not be saved. Please, try again.'));
+
+			$article = array("fellowship_id" => $id, "user_id" => $this->Auth->user('id'));
+
+			if ($this->UsersFellowships->save($article)) {
+				$this->Flash->success(__('Your application has been saved.'));
+				return $this->redirect(['controller'=>'fellowships', 'action' => 'index']);
 			}
+			$this->Flash->error(__('Unable to add your article.'));
 		}
-		$users = $this->UsersFellowship->User->find('list');
-		$fellowships = $this->UsersFellowship->Fellowship->find('list');
-		$this->set(compact('users', 'fellowships'));
+
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->UsersFellowship->exists($id)) {
-			throw new NotFoundException(__('Invalid users fellowship'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->UsersFellowship->save($this->request->data)) {
-				$this->Flash->success(__('The users fellowship has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Flash->error(__('The users fellowship could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('UsersFellowship.' . $this->UsersFellowship->primaryKey => $id));
-			$this->request->data = $this->UsersFellowship->find('first', $options);
-		}
-		$users = $this->UsersFellowship->User->find('list');
-		$fellowships = $this->UsersFellowship->Fellowship->find('list');
-		$this->set(compact('users', 'fellowships'));
-	}
+// /**
+//  * edit method
+//  *
+//  * @throws NotFoundException
+//  * @param string $id
+//  * @return void
+//  */
+// 	public function edit($id = null) {
+// 		if (!$this->UsersFellowship->exists($id)) {
+// 			throw new NotFoundException(__('Invalid users fellowship'));
+// 		}
+// 		if ($this->request->is(array('post', 'put'))) {
+// 			if ($this->UsersFellowship->save($this->request->data)) {
+// 				$this->Flash->success(__('The users fellowship has been saved.'));
+// 				return $this->redirect(array('action' => 'index'));
+// 			} else {
+// 				$this->Flash->error(__('The users fellowship could not be saved. Please, try again.'));
+// 			}
+// 		} else {
+// 			$options = array('conditions' => array('UsersFellowship.' . $this->UsersFellowship->primaryKey => $id));
+// 			$this->request->data = $this->UsersFellowship->find('first', $options);
+// 		}
+// 		$users = $this->UsersFellowship->User->find('list');
+// 		$fellowships = $this->UsersFellowship->Fellowship->find('list');
+// 		$this->set(compact('users', 'fellowships'));
+// 	}
 
 /**
  * delete method
@@ -96,6 +113,7 @@ class UsersFellowshipsController extends AppController {
  */
 	public function delete($id = null) {
 		$this->UsersFellowship->id = $id;
+
 		if (!$this->UsersFellowship->exists()) {
 			throw new NotFoundException(__('Invalid users fellowship'));
 		}
@@ -105,6 +123,6 @@ class UsersFellowshipsController extends AppController {
 		} else {
 			$this->Flash->error(__('The users fellowship could not be deleted. Please, try again.'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		return $this->redirect(array('controller'=>'users', 'action' => 'view', AuthComponent::user("id")));
 	}
 }

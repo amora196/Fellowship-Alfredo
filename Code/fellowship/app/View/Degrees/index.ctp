@@ -14,7 +14,6 @@
 		<td><?php echo h($degree['Degree']['id']); ?>&nbsp;</td>
 		<td><?php echo h($degree['Degree']['name']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $degree['Degree']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $degree['Degree']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $degree['Degree']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $degree['Degree']['id']))); ?>
 		</td>
@@ -38,9 +37,13 @@
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Degree'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Fellowships'), array('controller' => 'fellowships', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Fellowship'), array('controller' => 'fellowships', 'action' => 'add')); ?> </li>
-	</ul>
+	<?php if(AuthComponent::user("role_id") == 1) :?>
+		<ul>
+			<li><?php echo $this->Html->link(__('New Degree'), array('action' => 'add')); ?></li>
+			<li><?php echo $this->Html->link(__('List Fellowships'), array('controller' => 'fellowships', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('List Disciplines'), array('controller' => 'disciplines', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('List Eligibilities'), array('controller' => 'elegibilities', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
+		</ul>
+	<?php endif;?>
 </div>

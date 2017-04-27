@@ -1,8 +1,8 @@
-<?php 
+<?php
 	$title = h($user['User']['first_name'] .' ' .$user['User']['last_name']);
 	$buttons = array(
 			$this->Html->link(__("Edit"), array('action' => 'edit', $user['User']['id']), array("class" => "slds-button slds-button--neutral", "id" => "btnEdit",)),
-			$this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id'] ), 
+			$this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id'] ),
 				array("class" => "slds-button slds-button--neutral", "id" => "btnDelete", 'confirm' => __('Are you sure you want to delete user %s?', $user['User']['first_name'] .' '. $user['User']['last_name'])))
 		);
 ?>
@@ -75,46 +75,42 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Fellowships'), array('controller' => 'fellowships', 'action' => 'index')); ?> </li>
 	</ul>
 </div>
 
-<!--<div class="related form">
+<div class="related form">
 	<h3><?php echo __('Related Fellowships'); ?></h3>
 	<?php if (!empty($user['Fellowship'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Title'); ?></th>
-		<th><?php echo __('Description'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th><?php echo __('Degree Id'); ?></th>
-		<th><?php echo __('Discipline Id'); ?></th>
-		<th><?php echo __('Elegibility Id'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($user['Fellowship'] as $fellowship): ?>
-		<tr>
-			<td><?php echo $fellowship['id']; ?></td>
-			<td><?php echo $fellowship['title']; ?></td>
-			<td><?php echo $fellowship['description']; ?></td>
-			<td><?php echo $fellowship['created']; ?></td>
-			<td><?php echo $fellowship['modified']; ?></td>
-			<td><?php echo $fellowship['degree_id']; ?></td>
-			<td><?php echo $fellowship['discipline_id']; ?></td>
-			<td><?php echo $fellowship['elegibility_id']; ?></td>
-			<td><?php echo $fellowship['user_id']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'fellowships', 'action' => 'view', $fellowship['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'fellowships', 'action' => 'edit', $fellowship['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'fellowships', 'action' => 'delete', $fellowship['id']), array('confirm' => __('Are you sure you want to delete # %s?', $fellowship['id']))); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>-->
 
-	
+	<?php
+	$headerCols = array(
+		h('title'),
+		h('description'),
+		h('degree'),
+		h('discipline'),
+		h('eligibility')
+	);
+
+	foreach($user["Fellowship"] as $fellowship) {
+		$rows[] = array(
+			h($fellowship['title']),
+			h($fellowship['description']),
+			h($degrees[$fellowship['degree_id']]),
+			h($disciplines[$fellowship['discipline_id']]),
+			h($eligibilities[$fellowship['elegibility_id']]),
+			array(
+				$this->Html->link("", array('controller' => 'fellowships', 'action' => 'view', $fellowship['id']), array("class"=>"fa fa-eye", "title" => "View")),
+				$this->Form->postLink("",array('controller' => 'usersfellowships', 'action' => 'delete', $fellowship['UsersFellowship']["id"]),
+					array("class"=>"fa fa-trash-o", "title" => "Delete",
+					'confirm' => __('Are you sure you want to delete fellowship %s?', $fellowship['title'])))
+				),
+		);
+	}
+?>
+	<?php echo $this->element('table', array('headerCols' => $headerCols, "rows" => $rows, 'tableId' => 'myDataTable','escape' => false)); ?>
+
+<?php endif; ?>
+
+
 </div>

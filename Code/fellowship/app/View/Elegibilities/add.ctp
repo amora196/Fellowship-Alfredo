@@ -1,7 +1,7 @@
 <div class="elegibilities form">
 <?php echo $this->Form->create('Elegibility'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Elegibility'); ?></legend>
+		<legend><?php echo __('Add Eligibility'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
 	?>

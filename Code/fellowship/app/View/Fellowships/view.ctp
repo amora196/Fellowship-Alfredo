@@ -64,7 +64,7 @@
 			</div>
 			<div class="col-md-6">
 				<div class="slds-form-element slds-has-divider--bottom">
-					<span for="Degree" class="slds-form-element__label">Elegibility</span>
+					<span for="Degree" class="slds-form-element__label">Eligibility</span>
 					<div class="slds-form-element__control read-only-view">
 						<span class="slds-form-element__static">
 							<span class="slds-form-element__static">
@@ -79,8 +79,10 @@
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('List Fellowships'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-	</ul>
+	<?php if(AuthComponent::user("role_id") != 3) :?>
+		<ul>
+			<li><?php echo $this->Form->postLink(__('Apply for fellowship'), array('controller'=>'usersfellowships', 'action' => 'add', $fellowship['Fellowship']['id'])); ?> </li>
+			<li><?php echo $this->Html->link(__('List Fellowships'), array('action' => 'index')); ?> </li>
+		</ul>
+	<?php endif;?>
 </div>

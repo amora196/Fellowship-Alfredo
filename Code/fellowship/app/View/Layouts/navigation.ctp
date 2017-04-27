@@ -7,7 +7,7 @@
 
     <ul class="nav navbar-top-links navbar-right" style="margin-top: 10px;">
         <?php if (AuthComponent::user()) : ?>
-            <li><?=  $this->Html->link('Home', 'index',['style'=>'vertical-align: middle;', 'target'=>'_self', "class"=>"navbar-items"]);?></li>
+            <li><?=  $this->Html->link('Home', array('controller' => 'fellowships', 'action' => 'index'),['style'=>'vertical-align: middle;', 'target'=>'_self', "class"=>"navbar-items"]);?></li>
             <li class="dropdown" style="margin: none;">
                 <a class="dropdown-toggle navbar-items" data-toggle="dropdown" href="#">
                         <?php echo '<span>'.AuthComponent::user("first_name").' '. AuthComponent::user("last_name").'</span>'; ?>
